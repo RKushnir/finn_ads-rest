@@ -18,6 +18,7 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
+  spec.add_dependency "nokogiri", "~> 1.6.1"
   spec.add_dependency "multi_xml", "~> 0.5.5"
   spec.add_dependency "hashie", "~> 2.0"
 
