@@ -2,9 +2,26 @@ require 'nokogiri'
 
 module FinnAds
   module Rest
+    class Request < Struct.new(:body)
+    end
+
+    class MessageUpcaseProxy < BasicObject
+      def initialize(obj)
+        @obj = obj
+      end
+
+      def method_missing(method_name, *arguments, &block)
+        unless @obj.respond_to?(method_name)
+          method_name = method_name.to_s.upcase
+        end
+
+        @obj.__send__(method_name, *arguments, &block)
+      end
+    end
+
     class RequestBuilder
-      def build(params)
-        xml_builder = ::Nokogiri::XML::Builder.new do |xml|
+      def build(params, &block)
+        xml_builder = ::Nokogiri::XML::Builder.new(encoding: 'ISO-8859-1') do |xml|
           xml.doc.create_internal_subset(
             'IAD.IF.JOB',
             nil,
@@ -13,33 +30,13 @@ module FinnAds
 
           xml.send "IAD.IF.JOB" do
             xml.HEAD do
-              xml.PARTNER params.partner_id
+              xml.PARTNER params.fetch(:partner_id)
             end
-            params.objects.each do |object|
-              xml.OBJECT do
-                xml.OBJECT_HEAD do
-                  xml.ORDERNO #object.object_head.orderno
-                  xml.OVERWRITE_MMO('MODUS' => 'no') # all|images|urls|no
-                  xml.OBJECT_LOCATION
-                end
-                xml.JOB do
-                  xml.JOB_TITLE
-                  xml.SITUATION
-                  xml.SECTOR
-                  xml.JOB_CATEGORY do
-                    xml.CATEGORY
-                    xml.SUBCATEGORY
-                  end
-                  xml.DURATION
-                  xml.APPLICATION_LABEL
-                  xml.NO_OF_POSITIONS
-                end
-              end
-            end
+            block.call(MessageUpcaseProxy.new(xml))
           end
         end
 
-        xml_builder.to_xml
+        Request.new(xml_builder.to_xml)
       end
     end
   end
