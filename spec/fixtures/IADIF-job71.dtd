@@ -1,0 +1,150 @@
+<!-- DOCTYPE IAD.IF Jobs
+
+FINN.no
+
+Changelog:
+
+3.1-09.02.2001  Translated from Norwegian,  BB
+22.03.01    Removed code values         TBR
+18.04.01    'Salary' added          TBR
+31.10.01    Changed handling of text blocks BB
+26.06.02    Added number of positions   BB
+20.05.03    Declared OBJECT_HEAD as an entity
+
+IAD-IF-job60.dtd, 01.09.11
+- Added MANAGER_ROLE to JOB_EXECUTIVE
+
+IAD-IF-job70.dtd, 31.01.13
+- New elements added to all ad types (JOB, JOB_EXECUTIVE and JOB_PARTTIME):
+    - TAGS. Max 5 instances
+    - VIDEO_URL. Currently supports links to Youtube and Vimeo.
+    - PLEASE_REFER
+- New elements added to JOB_CONTACT:
+    - LINKEDIN_URL
+    - TWITTER. Use a twitter handle such as @FINN_no.
+- New elements added to COMPANY:
+    - FACEBOOK_URL
+    - LINKEDIN_URL
+    - TWITTER. Use a twitter handle such as @FINN_no.
+- Support for adding multiple images by using IADIF-mmo21.dtd
+- Removed old elements:
+    - ROLE
+    - EXTENT
+    - ELECTRONIC_APPLICATION
+    - ENTERPRICE_NUMBER
+    - EDUCATION. Use GENERAL_TEXT_JOB instead
+- APPLICATION_ADDRESS has been changed by:
+    - removing APPLICATION_ADDRESS/COMPANY_NAME
+    - removing APPLICATION_ADDRESS/NAME
+    - Only APPLICATION_ADDRESS/ADDRESS is remained from older versions. Used for a psychical address of where to send
+      an application or additional documents. Company contact details should be transferred in the COMPANY-element.
+- JOB_CONTACT has been changed by:
+    - removing ADDRESS
+    - removing FAX
+    - removing MOBILE. Use PHONE instead.
+    - changed PHONE to be an optional element
+- Text handling:
+    - GENERAL_TEXT_JOB/GENERAL_HEADING is now optional instead of required.
+      Since GENERAL_TEXT_JOB/GENERAL_TEXT supports a limited set of html tags such as <strong> there is no longer a
+      need for a separate element to mark section headers.
+
+IAD-IF-job71.dtd, 25.04.13
+- New element added to all ad types (JOB, JOB_EXECUTIVE and JOB_PARTTIME):
+    - APPLICATION_MOBILE_URL. Use this for application forms that is adjusted to mobile/smartphones
+- DURATION has been made mandatory instead of optional
+
+-->
+
+<!-- Definition of the 'top-element'; A transfer is  -->
+<!-- a IAD-if element with one or more OBJECTs       -->
+
+<!ELEMENT   IAD.IF.JOB (HEAD, OBJECT+)>
+<!-- The element HEAD identifies a partne and a provider -->
+<!ENTITY % HEAD SYSTEM "IADIF-head20.dtd">
+%HEAD;
+<!-- The element OBJECT consists of a HEAD and if existing information should be overwritten   -->
+<!-- or if transfer whould be ignored   -->
+<!ELEMENT   OBJECT (OBJECT_HEAD, (JOB|JOB_EXECUTIVE|JOB_PARTTIME))>
+
+<!-- OBJECT_HEAD- definition is common in IADIF-objecthead21.dtd -->
+<!ENTITY % OBJECT_HEAD SYSTEM "IADIF-objecthead21.dtd">
+%OBJECT_HEAD;
+
+<!-- Information about job position -->
+<!ELEMENT   JOB (JOB_TITLE, SITUATION, SECTOR, JOB_CATEGORY+, DURATION, SALARY?,
+        APPLICATION_ADDRESS*, COMPANY*, GENERAL_TEXT_JOB*,
+        APPLICATION_DEADLINE?, APPLICATION_EMAIL?, START_DATE?,
+        JOB_CONTACT*, APPLICATION_LABEL,  MOREINFO*, NO_OF_POSITIONS, TAGS*, PLEASE_REFER?, VIDEO_URL?,
+        APPLICATION_MOBILE_URL?)>
+<!-- Information about an executive position -->
+<!ELEMENT   JOB_EXECUTIVE (JOB_TITLE, SITUATION, SECTOR, JOB_CATEGORY+, DURATION, SALARY?,
+        APPLICATION_ADDRESS*, COMPANY*, GENERAL_TEXT_JOB*,
+        APPLICATION_DEADLINE?, APPLICATION_EMAIL?, START_DATE?,
+        JOB_CONTACT*, APPLICATION_LABEL, MOREINFO*, NO_OF_POSITIONS, TAGS*, PLEASE_REFER?, VIDEO_URL?,
+        APPLICATION_MOBILE_URL?, MANAGER_ROLE)>
+<!-- Information about a seasonal position -->
+<!ELEMENT   JOB_PARTTIME (JOB_TITLE, SITUATION, SECTOR, JOB_CATEGORY+, DURATION, SALARY?,
+        APPLICATION_ADDRESS*, COMPANY*, GENERAL_TEXT_JOB*,
+        APPLICATION_DEADLINE?, APPLICATION_EMAIL?, START_DATE?,
+        JOB_CONTACT*, APPLICATION_LABEL, MOREINFO*, NO_OF_POSITIONS, TAGS*, PLEASE_REFER?, VIDEO_URL?,
+        APPLICATION_MOBILE_URL?)>
+
+<!ELEMENT JOB_TITLE (#PCDATA)> <!-- Text max 100 chars -->
+
+<!ELEMENT SITUATION (#PCDATA)> <!-- Text max 100 chars -->
+
+<!ELEMENT SECTOR (#PCDATA)>
+
+<!ELEMENT JOB_CATEGORY (CATEGORY, SUBCATEGORY)>     <!-- 1 or two -->
+<!ELEMENT CATEGORY    (#PCDATA)>
+<!ELEMENT SUBCATEGORY (#PCDATA)>
+
+<!ELEMENT DURATION  (#PCDATA)>
+
+<!ELEMENT SALARY    (#PCDATA)>
+
+<!ELEMENT JOB_CONTACT (NAME, TITLE?, PHONE?, EMAIL?, LINKEDIN_URL?, TWITTER?)>
+<!ELEMENT NAME         (#PCDATA)>
+<!ELEMENT TITLE        (#PCDATA)>
+<!ELEMENT PHONE        (#PCDATA)>
+<!ELEMENT EMAIL        (#PCDATA)>
+<!ELEMENT LINKEDIN_URL (#PCDATA)>   <!-- Also used by COMPANY -->
+<!ELEMENT TWITTER      (#PCDATA)>   <!-- Also used by COMPANY -->
+
+<!ELEMENT COMPANY (COMPANY_NAME, LOGO?, URL?, INGRESS?, FACEBOOK_URL?, LINKEDIN_URL?, TWITTER?)>
+<!ELEMENT COMPANY_NAME (#PCDATA)>
+<!ELEMENT LOGO         (#PCDATA)>  <!-- COMPANY.LOGO is used for predefined logos that exists in the database -->
+<!ELEMENT URL          (#PCDATA)>  <!-- Also used by MOREINFO -->
+<!ELEMENT INGRESS      (#PCDATA)>
+<!ELEMENT FACEBOOK_URL (#PCDATA)>
+
+<!--- General text block -->
+<!ELEMENT GENERAL_TEXT_JOB      (GENERAL_HEADING?, GENERAL_TEXT)>
+<!ELEMENT GENERAL_HEADING       (#PCDATA)>  <!-- Set of legal values -->
+<!ELEMENT GENERAL_TEXT          (#PCDATA)>  <!-- Text no limit -->
+
+<!ELEMENT APPLICATION_EMAIL     (#PCDATA)>
+
+<!ELEMENT APPLICATION_ADDRESS (ADDRESS?)> <!-- Description of the ADDRESS of where to send the application -->
+<!ELEMENT ADDRESS (#PCDATA)> <!-- Text max 255 chars. -->
+
+<!ELEMENT APPLICATION_LABEL     (#PCDATA)>
+
+<!ELEMENT APPLICATION_DEADLINE  (#PCDATA)>
+
+<!ELEMENT START_DATE            (#PCDATA)>
+
+<!ELEMENT MOREINFO  (URL, URLTEXT?)>
+<!ELEMENT URLTEXT   (#PCDATA)>
+
+<!ELEMENT NO_OF_POSITIONS    (#PCDATA)>
+
+<!ELEMENT TAGS               (#PCDATA)> <!-- Max 5 TAGS-elements -->
+
+<!ELEMENT PLEASE_REFER       (#PCDATA)>
+
+<!ELEMENT VIDEO_URL          (#PCDATA)>  <!-- Use only approved video host sites -->
+
+<!ELEMENT MANAGER_ROLE       (#PCDATA)>
+
+<!ELEMENT APPLICATION_MOBILE_URL   (#PCDATA)>

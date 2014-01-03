@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE IAD.IF.JOB SYSTEM "http://finn.no/dtd/IADIF-job71.dtd">
+<IAD.IF.JOB>
+    <HEAD>
+        <PARTNER>insert_partnerID</PARTNER>
+    </HEAD>
+    <OBJECT>
+        <OBJECT_HEAD>
+            <ORDERNO>10100576</ORDERNO>
+            <USER_REFERENCE>enter_any_own_reference</USER_REFERENCE>
+            <OVERWRITE_MMO MODUS="no"/>
+            <VERSIONNO>1</VERSIONNO>
+            <FROMDATE>10.01.2013</FROMDATE>
+            <TODATE>10.02.2013</TODATE>
+            <OBJECT_LOCATION>
+                <STREETADDRESS>Grensen 5</STREETADDRESS>
+                <ZIPCODE>0159</ZIPCODE>
+                <COUNTRYCODE>NO</COUNTRYCODE>
+            </OBJECT_LOCATION>
+            <HEADING>Bli med oss og skap verdens beste markedsplass</HEADING>
+        </OBJECT_HEAD>
+        <JOB_EXECUTIVE>
+            <JOB_TITLE>Javautvikler</JOB_TITLE>
+            <SITUATION>Oslo</SITUATION>
+            <SECTOR>private</SECTOR>
+            <JOB_CATEGORY>
+                <CATEGORY>ITTELECOMINTERNET</CATEGORY>
+                <SUBCATEGORY>APPLICDEV</SUBCATEGORY>
+            </JOB_CATEGORY>
+            <JOB_CATEGORY>
+                <CATEGORY>ENGINEERING</CATEGORY>   
+                <SUBCATEGORY>COMPUTERENG</SUBCATEGORY>
+            </JOB_CATEGORY>
+            <DURATION>permanent</DURATION>
+            <SALARY>can be discussed</SALARY>
+            <APPLICATION_ADDRESS>
+                <ADDRESS/>
+            </APPLICATION_ADDRESS>
+            <COMPANY>
+                <COMPANY_NAME>FINN.no AS</COMPANY_NAME>
+                <LOGO />
+                <URL>http://www.finn.no/jobb</URL>
+                <INGRESS><![CDATA[FINN.no har over 300 engasjerte medarbeidere som sitter samlet i Oslo sentrum. FINN er en viktig del av mediekonsernet Schibsted og av Media Norge ASA, og består av markedene FINN eiendom, FINN bil, FINN jobb, FINN torget, FINN reise og FINN oppdrag.<br/><br/>FINNs verdier som preger oss i alt vi gjør:<br/>SULT - PRESISJON - TAKHØYDE - HUMØR ]]></INGRESS>
+                <FACEBOOK_URL>https://www.facebook.com/finn.no</FACEBOOK_URL>
+                <LINKEDIN_URL>www.linkedin.com/company/12062</LINKEDIN_URL>
+                <TWITTER>@FINN_no</TWITTER>
+            </COMPANY>
+            <GENERAL_TEXT_JOB>
+                <GENERAL_HEADING />
+                <GENERAL_TEXT><![CDATA[Vi ser etter deg som ønsker en utfordrende hverdag med fokus på innovativ produktutvikling og heftig koding.<br/><br/><b>Slik håper vi du er</b><br/>Du er veldig opptatt av å levere det toppsjefen vår, Christian, kaller "Good, Clean Code".]]></GENERAL_TEXT>
+              </GENERAL_TEXT_JOB>
+            <APPLICATION_DEADLINE>24.09.2013</APPLICATION_DEADLINE>
+            <APPLICATION_EMAIL>soknadPerEpost@finn.no</APPLICATION_EMAIL>
+            <START_DATE>Så snart som mulig</START_DATE>
+            <JOB_CONTACT>
+                <NAME>Pedro Thormodsen</NAME>
+                <TITLE>Produktdirektør</TITLE>
+                <PHONE>906 72 817</PHONE>
+                <EMAIL>jobb@finn.no</EMAIL>
+                <LINKEDIN_URL>http://www.linkedin.com/in/thormodsen</LINKEDIN_URL>
+                <TWITTER>@hormodsen</TWITTER>
+            </JOB_CONTACT>
+            <JOB_CONTACT>
+                <NAME>Lennart A. Augustson</NAME>
+                <TITLE>HR Konsulent / Ansvarlig rekruttering</TITLE>
+                <PHONE>416 51 193</PHONE>
+                <EMAIL>hr@finn.no</EMAIL>
+                <LINKEDIN_URL>http://www.linkedin.com/pub/lennart-augustson/23/475/42b</LINKEDIN_URL>
+                <TWITTER/>
+            </JOB_CONTACT>
+            <APPLICATION_LABEL>Javautvikler</APPLICATION_LABEL>
+            <MOREINFO><URL/></MOREINFO><!-- The first MOREINFO instance is reserved for externals online job application form-->
+            <MOREINFO><URL/></MOREINFO><!-- Must send empty instance for later links to be displayed -->
+            <MOREINFO><URL/></MOREINFO><!-- Must send empty instance for later links to be displayed  -->
+            <MOREINFO>
+                <URL>http://labs.finn.no/</URL>
+                <URLTEXT>FINN labs</URLTEXT>
+            </MOREINFO>
+            <MOREINFO>
+                <URL>http://finnjobb.wordpress.com/</URL>
+                <URLTEXT>Produktblogg</URLTEXT>
+            </MOREINFO>
+            <NO_OF_POSITIONS>2</NO_OF_POSITIONS>
+            <TAGS>Java</TAGS>
+            <TAGS>Smidig</TAGS>
+            <TAGS>Lean</TAGS>
+            <TAGS>TDD</TAGS>
+            <TAGS>ruby</TAGS>
+            <PLEASE_REFER>YES</PLEASE_REFER>
+            <VIDEO_URL>https://player.vimeo.com/video/14731655</VIDEO_URL>
+			<APPLICATION_MOBILE_URL>http://import-annonse.with.mobiletilpasset.url.no</APPLICATION_MOBILE_URL>
+            <MANAGER_ROLE>senmanager</MANAGER_ROLE>
+        </JOB_EXECUTIVE>
+    </OBJECT>
+</IAD.IF.JOB>
+

@@ -1,5 +1,5 @@
 module FinnAds
   class JobPosting
-    attr_writer :job_title
+    attr_accessor :orderno, :job_title
   end
 end
